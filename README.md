@@ -6,7 +6,9 @@
 
 ## About
 
-This repository contains Python scripts for analyzing network traffic data to classify IPs as compromised or non-compromised using a Support Vector Machine (SVM) model and predict network traffic flows using a Random Forest Regressor model.
+This repository contains Python scripts for analyzing network traffic data to classify IPs as compromised or non-compromised using a Support Vector Machine (SVM) model and to predict network traffic flows using a Random Forest Regressor model.
+
+This was a project for a Machine Learning class during my Master's degree. The presentation is written in Portuguese and can be accessed [here](./slides.pdf).
 
 ## Run
 
