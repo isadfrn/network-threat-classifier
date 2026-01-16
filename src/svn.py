@@ -14,8 +14,11 @@ from sklearn.metrics import (
     auc
 )
 import matplotlib.pyplot as plt
+from pathlib import Path
 
-df = pd.read_csv('processed_data.csv')
+project_root = Path(__file__).parent.parent
+
+df = pd.read_csv(project_root / 'output' / 'processed_data.csv')
 
 features = ['l_ipn', 'r_asn', 'f', 'weekday', 'is_weekend', 'month']
 X = df[features]
@@ -50,7 +53,7 @@ f1 = f1_score(y_test, y_pred)
 print("F1 Score: {:.2f}%".format(f1 * 100))
 
 fbeta = fbeta_score(y_test, y_pred, beta=0.5)
-print("Fβ Score (β=0.5): {:.2f}%".format(fbeta * 100))
+print("Fbeta Score (beta=0.5): {:.2f}%".format(fbeta * 100))
 
 fpr, tpr, thresholds = roc_curve(y_test, y_proba)
 roc_auc = auc(fpr, tpr)
@@ -63,5 +66,5 @@ plt.xlabel('Taxa de Falsos Positivos')
 plt.ylabel('Taxa de Verdadeiros Positivos')
 plt.title('Característica de Operação do Receptor (ROC)')
 plt.legend(loc="lower right")
-plt.savefig('roc_curve.png')
+plt.savefig(project_root / 'output' / 'roc_curve.png')
 plt.close()

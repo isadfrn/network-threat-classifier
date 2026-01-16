@@ -4,8 +4,11 @@ from sklearn.model_selection import train_test_split
 from sklearn.ensemble import RandomForestRegressor
 from sklearn.metrics import mean_squared_error, mean_absolute_error
 import matplotlib.pyplot as plt
+from pathlib import Path
 
-df = pd.read_csv('processed_data.csv')
+project_root = Path(__file__).parent.parent
+
+df = pd.read_csv(project_root / 'output' / 'processed_data.csv')
 
 df.sort_values(['l_ipn', 'date'], inplace=True)
 
@@ -42,5 +45,5 @@ plt.legend()
 plt.title('Comparação entre Valores Reais e Previstos')
 plt.xlabel('Amostras')
 plt.ylabel('Número de Fluxos')
-plt.savefig('prediction_comparison.png')
+plt.savefig(project_root / 'output' / 'prediction_comparison.png')
 plt.close()

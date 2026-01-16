@@ -1,7 +1,10 @@
 import pandas as pd
 from sklearn.preprocessing import StandardScaler
+from pathlib import Path
 
-df = pd.read_csv('data.csv')
+project_root = Path(__file__).parent.parent
+
+df = pd.read_csv(project_root / 'data' / 'data.csv')
 
 df['date'] = pd.to_datetime(df['date'])
 
@@ -30,4 +33,4 @@ df['is_weekend'] = df['weekday'].apply(lambda x: 1 if x >= 5 else 0)
 scaler = StandardScaler()
 df[['f', 'r_asn']] = scaler.fit_transform(df[['f', 'r_asn']])
 
-df.to_csv('processed_data.csv', index=False)
+df.to_csv(project_root / 'output' / 'processed_data.csv', index=False)
