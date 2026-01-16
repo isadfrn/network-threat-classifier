@@ -12,22 +12,35 @@ This was a project for a Machine Learning class during my Master's degree. The p
 
 ## Run
 
-- Create a virtual env:
+Run the complete pipeline with a single command. The script will automatically create a virtual environment, install dependencies, and execute all steps.
+
+**Using Python script (works on all platforms):**
 
 ```shell
-python -m venv venv
+python run.py
 ```
 
-- Load the virtual env:
+**Using Makefile (Linux/Mac, or Windows with Make installed):**
 
 ```shell
-source venv/bin/activate
+make
 ```
 
-- Install all required packages:
+Both commands will automatically:
+
+- Create a virtual environment if it doesn't exist
+- Install all dependencies from `requirements.txt`
+- Run the complete pipeline (preprocessing → classification → prediction)
+
+**Additional Makefile commands:**
 
 ```shell
-pip install pandas numpy scikit-learn imbalanced-learn matplotlib seaborn
+make preprocess  # Data preprocessing only
+make classify    # Preprocessing + SVM classification
+make predict     # Complete pipeline
+make clean       # Remove generated files
+make clean-venv  # Remove virtual environment
+make help        # Show all available commands
 ```
 
 ## Contributing
