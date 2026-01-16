@@ -34,28 +34,28 @@ preprocess: install
 	@echo "============================================================"
 	@echo "Running: Data Preprocessing"
 	@echo "============================================================"
-	@$(PYTHON) preprocessor.py
+	@$(PYTHON) src/preprocessor.py
 
 classify: preprocess
 	@echo "============================================================"
 	@echo "Running: SVM Classification"
 	@echo "============================================================"
-	@$(PYTHON) svn.py
+	@$(PYTHON) src/svn.py
 
 predict: classify
 	@echo "============================================================"
 	@echo "Running: Random Forest Prediction"
 	@echo "============================================================"
-	@$(PYTHON) predictor.py
+	@$(PYTHON) src/predictor.py
 
 clean:
 	@echo "Cleaning generated files..."
 ifeq ($(OS),Windows_NT)
-	@if exist processed_data.csv $(RM) processed_data.csv
-	@if exist roc_curve.png $(RM) roc_curve.png
-	@if exist prediction_comparison.png $(RM) prediction_comparison.png
+	@if exist output\processed_data.csv $(RM) output\processed_data.csv
+	@if exist output\roc_curve.png $(RM) output\roc_curve.png
+	@if exist output\prediction_comparison.png $(RM) output\prediction_comparison.png
 else
-	@$(RM) processed_data.csv roc_curve.png prediction_comparison.png
+	@$(RM) output/processed_data.csv output/roc_curve.png output/prediction_comparison.png
 endif
 	@echo "Clean complete!"
 
