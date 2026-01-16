@@ -8,7 +8,29 @@
 
 This repository contains Python scripts for analyzing network traffic data to classify IPs as compromised or non-compromised using a Support Vector Machine (SVM) model and to predict network traffic flows using a Random Forest Regressor model.
 
-This was a project for a Machine Learning class during my Master's degree. The presentation is written in Portuguese and can be accessed [here](./slides.pdf).
+This was a project for a Machine Learning class during my Master's degree. The presentation is written in Portuguese and can be accessed [here](./docs/slides.pdf).
+
+## Project Structure
+
+```
+network-threat-classifier/
+├── src/                    # Python source code
+│   ├── preprocessor.py     # Data preprocessing
+│   ├── svn.py              # SVM classification
+│   └── predictor.py        # Random Forest prediction
+├── data/                   # Input data
+│   └── data.csv
+├── output/                 # Generated files (ignored by git)
+│   ├── processed_data.csv
+│   ├── roc_curve.png
+│   └── prediction_comparison.png
+├── docs/                   # Documentation
+│   └── slides.pdf
+├── run.py                  # Main runner script
+├── Makefile                # Makefile for automation
+├── requirements.txt        # Python dependencies
+└── README.md
+```
 
 ## Run
 
